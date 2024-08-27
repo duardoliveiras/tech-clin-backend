@@ -1,0 +1,10 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: tech!clin
+    ports:
+      - "5434:5432"
