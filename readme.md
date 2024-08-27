@@ -15,3 +15,24 @@ npm install typeorm
 npm install pg --save
 npm install cors
 ```
+
+opções de configuração do typescript para funcionar com express e typeorm tsconfig.json:
+
+```
+{
+  "compilerOptions": {
+     "lib": [
+        "es5",
+        "es6"
+     ],
+     "target": "es2016",
+     "module": "commonjs",
+     "moduleResolution": "node",
+     "esModuleInterop": true,
+     "outDir": "./build",
+     "emitDecoratorMetadata": true,
+     "experimentalDecorators": true,
+     "sourceMap": true
+  }
+}
+```
