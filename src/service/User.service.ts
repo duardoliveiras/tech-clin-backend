@@ -11,15 +11,15 @@ export class UserService {
     this.userRepository = userRepository;
   }
 
-  async createUser(nome: string, email: string, password: string) {
-    const user = new User();
-
-    user.name = nome;
-    user.email = email;
-    user.password = password;
-
-    this.userRepository.save(user);
-
-    return;
+  async createUser(name: string, email: string, password: string) {
+    const user = this.userRepository.create({ name, email, password });
+    try {
+      await this.userRepository.save(user);
+    } catch (err) {
+      if (err.code === "23505") {
+        throw new Error("duplicidade");
+      }
+      throw err;
+    }
   }
 }
