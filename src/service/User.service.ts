@@ -14,8 +14,9 @@ export class UserService {
   async createUser(nome: string, email: string, password: string) {
     const user = new User();
 
-    user.email = "duardooliveiras@gmail.com";
-    user.password = "teste";
+    user.name = nome;
+    user.email = email;
+    user.password = password;
 
     this.userRepository.save(user);
 
