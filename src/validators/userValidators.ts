@@ -8,5 +8,13 @@ export const createUserSchema = z.object({
   }),
 });
 
+export const loginSchema = z.object({
+  body: z.object({
+    email: z.string().email(),
+    password: z.string(),
+  }),
+});
+
 // Infer -> retorna um tipo a partir de um objeto.
 export type CreateUserSchema = z.infer<typeof createUserSchema>;
+export type LoginSchema = z.infer<typeof loginSchema>;

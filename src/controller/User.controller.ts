@@ -27,4 +27,19 @@ export class UserController {
       }
     }
   };
+
+  validateLogin = async (req: Request, res: Response) => {
+    const { email, password } = req.body;
+
+    try {
+      await this.userService.validateLogin(email, password);
+      res.status(200).json({
+        message: "Login realizado com sucesso!",
+      });
+    } catch (err) {
+      res.status(500).json({
+        error: err.message,
+      });
+    }
+  };
 }
