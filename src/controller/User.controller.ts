@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { UserService } from "../service/User.service";
-import { CreateUserRequest } from "../types/requestTypes";
 
 export class UserController {
   userService: UserService;
@@ -9,10 +8,7 @@ export class UserController {
     this.userService = userService;
   }
 
-  createUser = async (
-    req: Request<CreateUserRequest["body"]>,
-    res: Response
-  ) => {
+  createUser = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;
     try {
       await this.userService.createUser(name, email, password);
