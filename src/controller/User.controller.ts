@@ -32,10 +32,11 @@ export class UserController {
     const { email, password } = req.body;
 
     try {
-      await this.userService.validateLogin(email, password);
-      res.status(200).json({
-        message: "Login realizado com sucesso!",
-      });
+      const userWithToken = await this.userService.validateLogin(
+        email,
+        password
+      );
+      res.status(200).json(userWithToken);
     } catch (err) {
       res.status(500).json({
         error: err.message,

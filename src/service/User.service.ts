@@ -4,6 +4,12 @@ import { Repository } from "typeorm";
 import { dataSource } from "../database/DataSource";
 import { User } from "../database/entity/User";
 
+import jwt from "jsonwebtoken";
+
+interface UserWithToken extends User {
+  token: string;
+}
+
 export class UserService {
   userRepository: Repository<User>;
   saultRounds = 10;
@@ -46,5 +52,23 @@ export class UserService {
     if (!result) {
       throw Error("Senha ou Email incorretos");
     }
+
+    const token = jwt.sign(
+      {
+        id: user.id,
+        nome: user.name,
+        email: user.email,
+      },
+      process.env.SECRET_JWT,
+      {
+        expiresIn: "24h",
+      }
+    );
+
+    const userWithToken: UserWithToken = {
+      ...user,
+      token,
+    };
+    return userWithToken;
   }
 }
