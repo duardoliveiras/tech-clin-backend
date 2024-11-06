@@ -1,4 +1,12 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from "typeorm";
+import { Especialidade } from "./Especialidade";
 
 @Entity("clinica")
 export class Clinica {
@@ -25,4 +33,18 @@ export class Clinica {
 
   @Column()
   lon: number;
+
+  @ManyToMany(() => Especialidade, (especialidade) => especialidade.clinicas)
+  @JoinTable({
+    name: "clinica_especialidade",
+    joinColumn: {
+      name: "id_clinica",
+      referencedColumnName: "id",
+    },
+    inverseJoinColumn: {
+      name: "id_especialidade",
+      referencedColumnName: "id",
+    },
+  })
+  especialidades: Especialidade[];
 }

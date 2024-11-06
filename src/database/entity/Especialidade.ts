@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Clinica } from "./Clinica";
 
 @Entity("especialidade")
 export class Especialidade {
@@ -7,4 +8,7 @@ export class Especialidade {
 
   @Column()
   descricao: string;
+
+  @ManyToMany(() => Clinica, (clinica) => clinica.especialidades)
+  clinicas: Clinica[];
 }
