@@ -15,4 +15,6 @@ clinicaRoutes.post(
   clinicaController.createClinica
 );
 
+clinicaRoutes.get("/clinicas", clinicaController.getAllClinicas);
+
 export { clinicaRoutes };

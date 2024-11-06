@@ -20,4 +20,13 @@ export class ClinicaController {
       return res.status(500).json(err);
     }
   };
+
+  getAllClinicas = async (req: Request, res: Response) => {
+    try {
+      const clinicas = await this.clinicaService.getAllClinicas();
+      res.status(200).json(clinicas);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  };
 }

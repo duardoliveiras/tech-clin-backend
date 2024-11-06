@@ -50,4 +50,18 @@ export class ClinicaService {
       throw `${err}`;
     }
   }
+
+  async getAllClinicas() {
+    try {
+      const clinicas = await this.clinicaRepository.find();
+      return clinicas.map((clinica) => {
+        return {
+          id: clinica.id,
+          nome: clinica.nome,
+        };
+      });
+    } catch (err) {
+      throw `${err}`;
+    }
+  }
 }

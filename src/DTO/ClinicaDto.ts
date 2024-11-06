@@ -1,4 +1,5 @@
 export interface ClinicaDTO {
+  nome: string;
   cnpj: string;
   cidade: string;
   estado: string;

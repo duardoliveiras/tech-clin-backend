@@ -14,6 +14,9 @@ export class Clinica {
   id: number;
 
   @Column()
+  nome: string;
+
+  @Column()
   cnpj: string;
 
   @Column()
