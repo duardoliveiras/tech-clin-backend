@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import {
+  Column,
+  Entity,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  Unique,
+} from "typeorm";
+import { Medico } from "./Medico";
 
 @Entity("users")
 @Unique(["email"])
@@ -14,4 +21,7 @@ export class User {
 
   @Column()
   password: string;
+
+  @OneToOne(() => Medico, (medico) => medico.usuario)
+  medico: Medico;
 }

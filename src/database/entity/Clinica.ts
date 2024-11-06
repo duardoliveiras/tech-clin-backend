@@ -3,10 +3,12 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
 } from "typeorm";
 import { Especialidade } from "./Especialidade";
+import { Medico } from "./Medico";
 
 @Entity("clinica")
 export class Clinica {
@@ -53,4 +55,7 @@ export class Clinica {
     },
   })
   especialidades: Especialidade[];
+
+  @OneToMany(() => Medico, (medico) => medico.clinica)
+  medicos: Medico[];
 }
