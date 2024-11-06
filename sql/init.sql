@@ -9,3 +9,8 @@ create table users (
 	email varchar(255),
 	password varchar(255)
 )
+
+create table especialidade (
+	id SERIAL primary key,
+	descricao varchar(100)
+);
