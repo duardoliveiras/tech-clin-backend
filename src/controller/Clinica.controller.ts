@@ -11,8 +11,10 @@ export class ClinicaController {
 
   createClinica = async (req: Request, res: Response) => {
     try {
-      const clinicaDto: ClinicaDTO = req.body;
-      const clinica = await this.clinicaService.createUser(clinicaDto);
+      const clinicaDto: ClinicaDTO = JSON.parse(req.body.data);
+      const file: Express.Multer.File = req.file;
+
+      const clinica = await this.clinicaService.createUser(clinicaDto, file);
       return res.status(200).json(clinica);
     } catch (err) {
       return res.status(500).json(err);

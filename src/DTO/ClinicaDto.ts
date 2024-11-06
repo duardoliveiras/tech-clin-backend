@@ -7,4 +7,5 @@ export interface ClinicaDTO {
   lat: number;
   lon: number;
   especialidadeIds: number[];
+  url: string;
 }

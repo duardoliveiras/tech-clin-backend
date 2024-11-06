@@ -34,6 +34,9 @@ export class Clinica {
   @Column()
   lon: number;
 
+  @Column()
+  url: string;
+
   @ManyToMany(() => Especialidade, (especialidade) => especialidade.clinicas)
   @JoinTable({
     name: "clinica_especialidade",
