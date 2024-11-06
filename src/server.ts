@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import path from "path";
 import { clinicaRoutes } from "./routes/Clinica.routes";
+import { especialidadeRoutes } from "./routes/Especialidade.routes";
 import { userRoutes } from "./routes/User.routes";
 
 const app = express();
@@ -16,6 +17,7 @@ app.listen(Number(process.env.PORT), "0.0.0.0", () => {
 
 app.use(userRoutes);
 app.use(clinicaRoutes);
+app.use(especialidadeRoutes);
 
 app.get("/test", (req, res) => {
   return res.send("Application running!");
